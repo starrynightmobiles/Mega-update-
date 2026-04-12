@@ -1,12 +1,9 @@
-import Link from "next/link"
+import HeroSmoke from "../components/HeroSmoke"
 
 export default function Home() {
   return (
-    <div style={{ textAlign: "center", padding: 50 }}>
-      <h1>Starry Nights ✨</h1>
-      <Link href="/shop">
-        <button>Shop Now</button>
-      </Link>
-    </div>
+    <>
+      <HeroSmoke />
+    </>
   )
 }

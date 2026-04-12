@@ -1,19 +1,16 @@
-const router = require("express").Router()
+const handleCheckout = async () => {
+  const res = await fetch("http://localhost:5000/api/payments/pay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: "customer@email.com",
+      amount: total
+    })
+  })
 
-let cart = []
+  const data = await res.json()
 
-router.post("/add", (req, res) => {
-  cart.push(req.body)
-  res.json(cart)
-})
-
-router.get("/", (req, res) => {
-  res.json(cart)
-})
-
-router.delete("/clear", (req, res) => {
-  cart = []
-  res.json({ message: "Cart cleared" })
-})
-
-module.exports = router
+  if (data.redirectUrl) {
+    window.location.href = data.redirectUrl
+  }
+}

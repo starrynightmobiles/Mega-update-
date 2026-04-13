@@ -1,15 +1,18 @@
-/* RESET */
-html, body {
+/* RESET EVERYTHING */
+html, body, #__next {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
   background: black;
-  font-family: sans-serif;
 }
 
 /* 🎬 HERO FULLSCREEN */
 .hero {
-  position: relative;
-  width: 100%;
+  position: fixed;   /* 🔥 THIS FIXES YOUR PROBLEM */
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
@@ -17,84 +20,67 @@ html, body {
 /* 🎥 VIDEO FULL COVER */
 .video {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   top: 0;
   left: 0;
 
-  /* Makes it feel deeper */
-  filter: brightness(0.7) contrast(1.2);
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  /* makes it cinematic */
+  filter: brightness(0.65) contrast(1.2);
 }
 
-/* 🌫️ BLEND EFFECT */
-.blend-overlay {
+/* 🌫️ OVERLAY BLEND */
+.overlay {
   position: absolute;
   width: 100%;
   height: 100%;
 
-  /* This is the MAGIC blend */
-  background: radial-gradient(circle at center, transparent 40%, black 100%);
-  mix-blend-mode: multiply;
-
+  background: radial-gradient(circle, transparent 40%, black 100%);
   z-index: 1;
 }
 
-/* ✨ CONTENT */
+/* ✨ TEXT CENTERED */
 .content {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) translateY(40px);
+  transform: translate(-50%, -50%);
 
   text-align: center;
   color: white;
   z-index: 2;
-
-  opacity: 0;
-  transition: all 1.5s ease;
-}
-
-.content.show {
-  opacity: 1;
-  transform: translate(-50%, -50%) translateY(0);
 }
 
 /* 💎 TITLE */
-.title {
-  font-size: 3.5rem;
-  letter-spacing: 4px;
+.content h1 {
+  font-size: 3rem;
+  letter-spacing: 3px;
 
-  /* Blends with smoke */
+  /* BLEND EFFECT */
   text-shadow:
-    0 0 10px rgba(255,255,255,0.5),
+    0 0 10px rgba(255,255,255,0.6),
     0 0 30px rgba(255,255,255,0.3);
 }
 
 /* 🌌 SUBTEXT */
-.subtitle {
+.content p {
   margin-top: 10px;
-  font-size: 1.2rem;
   opacity: 0.85;
 }
 
 /* 🛒 BUTTON */
-.btn {
+.content a {
   display: inline-block;
-  margin-top: 25px;
-  padding: 14px 32px;
-  border-radius: 40px;
+  margin-top: 20px;
+  padding: 12px 28px;
 
+  border-radius: 30px;
   background: rgba(255,255,255,0.9);
   color: black;
   text-decoration: none;
+
   font-weight: bold;
-
-  backdrop-filter: blur(6px);
-  transition: all 0.3s ease;
-}
-
-.btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 25px rgba(255,255,255,0.6);
 }

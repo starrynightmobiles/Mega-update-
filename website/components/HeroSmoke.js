@@ -1,36 +1,30 @@
 import { useEffect, useState } from "react"
 
 export default function HeroSmoke() {
-  const [visible, setVisible] = useState(false)
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
-    setTimeout(() => setVisible(true), 300)
+    setTimeout(() => setShow(true), 300)
   }, [])
 
   return (
-    <div className="hero-container">
+    <div className="hero">
 
-      {/* 🎬 Smoke Background */}
-      <video autoPlay muted loop playsInline className="video-bg">
+      {/* 🎬 FULLSCREEN VIDEO */}
+      <video autoPlay muted loop playsInline className="video">
         <source src="/smoke.mp4" type="video/mp4" />
       </video>
 
-      {/* 🌑 Overlay */}
-      <div className="overlay" />
+      {/* 🌫️ SOFT DARK BLEND */}
+      <div className="blend-overlay" />
 
-      {/* ✨ Glow Layer */}
-      <div className="glow" />
+      {/* ✨ TEXT INSIDE SMOKE */}
+      <div className={`content ${show ? "show" : ""}`}>
+        <h1 className="title">Starry Nights</h1>
+        <p className="subtitle">Luxury Shopping Experience</p>
 
-      {/* 💎 Content */}
-      <div className={`hero-content ${visible ? "show" : ""}`}>
-        <h1 className="hero-title">Starry Nights ✨</h1>
-
-        <p className="hero-sub">
-          Experience the Future of Shopping
-        </p>
-
-        <a href="/shop" className="hero-btn">
-          Enter Store 🛒
+        <a href="/shop" className="btn">
+          Enter Store
         </a>
       </div>
     </div>
